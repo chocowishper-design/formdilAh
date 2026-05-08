@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>form fadilah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --violet:#7B3FE4;
+  --violet-light:#A78BFA;
+  --blue-light:#93C5FD;
+  --nebula:#C084FC;
+  --dark:#050310;
+  --cream:#EEE8FF;
+  --ivory:#DDD6FE;
+}
+
+body{
+  background:var(--dark);
+  overflow:auto;
+  color:white;
+  font-family:'Lato',sans-serif;
+}
+
+/* ===== STARS ===== */
+
+#stars{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
+
+/* ===== MAIN ===== */
+
+.main{
+  position:relative;
+  z-index:2;
+
+  width:100%;
+  height:100vh;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+/* ===== LEFT ===== */
+
+.left{
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  padding:4rem;
+  padding-top:8vh;
+
+  text-align:center;
+
+  position:relative;
+}
+
+.label{
+
+  letter-spacing:.4em;
+  text-transform:uppercase;
+
+  font-size:.72rem;
+
+  color:var(--violet-light);
+
+  margin-bottom:1.5rem;
+
+  animation:fadeUp 1s ease forwards;
+}
+
+.title{
+
+  font-family:'Playfair Display',serif;
+
+  font-size:clamp(4rem,7vw,7rem);
+
+  line-height:.95;
+
+  margin-top:1rem;
+
+  background:linear-gradient(
+    135deg,
+    var(--blue-light),
+    var(--violet-light),
+    var(--nebula)
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  text-shadow:
+    0 0 20px rgba(167,139,250,.2),
+    0 0 40px rgba(123,63,228,.15);
+
+  animation:fadeUp 1s ease .2s forwards;
+
+  opacity:0;
+}
+
+.subtitle{
+
+  margin-top:1.2rem;
+
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+
+  font-size:1.5rem;
+
+  color:var(--ivory);
+
+  opacity:0;
+
+  animation:fadeUp 1s ease .5s forwards;
+}
+
+.divider{
+
+  width:90px;
+  height:1px;
+
+  margin:2rem 0;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--violet-light),
+    transparent
+  );
+
+  opacity:0;
+
+  animation:fadeUp 1s ease .7s forwards;
+}
+
+.from{
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:1.1rem;
+
+  color:rgba(255,255,255,.7);
+
+  opacity:0;
+
+  animation:fadeUp 1s ease .9s forwards;
+}
+
+.from span{
+
+  color:var(--violet-light);
+
+  font-size:1.3rem;
+
+  font-style:italic;
+}
+
+/* ===== RIGHT ===== */
+
+.right{
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:4rem;
+  padding-top:8vh;
+}
+
+.card{
+
+  width:100%;
+  max-width:540px;
+
+  background:rgba(255,255,255,.04);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(24px) saturate(180%);
+
+  border-radius:32px;
+
+  padding:3rem;
+
+  box-shadow:
+    0 0 40px rgba(123,63,228,.15);
+
+  animation:fadeUp 1.2s ease;
+}
+
+.message-label{
+
+  font-size:.7rem;
+
+  letter-spacing:.35em;
+
+  text-transform:uppercase;
+
+  color:var(--violet-light);
+
+  margin-bottom:2rem;
+}
+
+.message{
+
+  font-family:'Cormorant Garamond',serif;
+
+  line-height:1.9;
+
+  font-size:1.35rem;
+
+  color:rgba(255,255,255,.85);
+
+  margin-bottom:2rem;
+}
+
+.signature{
+
+  margin-top:2rem;
+
+  font-family:'Playfair Display',serif;
+
+  font-style:italic;
+
+  color:rgba(255,255,255,.65);
+}
+
+.signature span{
+
+  display:block;
+
+  margin-top:.4rem;
+
+  color:var(--violet-light);
+
+  font-size:2rem;
+}
+
+/* ===== BUTTON ===== */
+
+.btn{
+
+  margin-top:2.5rem;
+
+  border:none;
+  outline:none;
+
+  padding:1rem 2rem;
+
+  border-radius:999px;
+
+  background:linear-gradient(
+    135deg,
+    rgba(123,63,228,.25),
+    rgba(147,197,253,.2)
+  );
+
+  border:1px solid rgba(167,139,250,.3);
+
+  color:white;
+
+  letter-spacing:.2em;
+
+  text-transform:uppercase;
+
+  font-size:.75rem;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 10px 30px rgba(123,63,228,.25);
+}
+
+/* ===== MUSIC ===== */
+
+.music{
+
+  position:fixed;
+
+  bottom:1.5rem;
+  right:1.5rem;
+
+  z-index:20;
+
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+
+  background:rgba(5,3,16,.85);
+
+  border:1px solid rgba(167,139,250,.2);
+
+  padding:.8rem 1rem;
+
+  border-radius:999px;
+
+  backdrop-filter:blur(20px);
+
+  box-shadow:0 4px 20px rgba(0,0,0,.25);
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.music:hover{
+
+  transform:translateY(-2px);
+
+  border-color:rgba(167,139,250,.45);
+}
+
+.dot{
+
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:var(--violet-light);
+
+  animation:pulse 1.5s infinite;
+}
+
+.music-text{
+
+  display:flex;
+  flex-direction:column;
+}
+
+.music-title{
+
+  font-size:.72rem;
+}
+
+.music-artist{
+
+  font-size:.62rem;
+
+  color:var(--violet-light);
+}
+
+/* ===== SHOOTING STARS ===== */
+
+.shooting-star{
+
+  position:fixed;
+
+  width:220px;
+  height:2px;
+
+  background:linear-gradient(
+    90deg,
+    white,
+    transparent
+  );
+
+  top:20%;
+  left:-20%;
+
+  transform:rotate(-20deg);
+
+  opacity:.7;
+
+  animation:shoot 7s linear infinite;
+
+  z-index:1;
+}
+
+.shooting-star.second{
+
+  top:60%;
+
+  animation-delay:3s;
+}
+
+/* ===== CONFETTI ===== */
+
+.confetti{
+
+  position:fixed;
+
+  width:8px;
+  height:8px;
+
+  top:-10px;
+
+  z-index:999;
+
+  animation:fall linear forwards;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:900px){
+
+  body{
+    overflow:auto;
+  }
+
+  .main{
+
+    grid-template-columns:1fr;
+
+    height:auto;
+  }
+
+  .left,
+  .right{
+
+    min-height:100vh;
+  }
+
+  .left{
+
+    padding:2rem;
+
+    padding-top:10vh;
+  }
+
+  .right{
+
+    padding:2rem;
+  }
+
+  .card{
+
+    padding:2rem;
+  }
+
+  .message{
+
+    font-size:1.2rem;
+  }
+
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes pulse{
+
+  0%,100%{
+    opacity:1;
+  }
+
+  50%{
+    opacity:.3;
+  }
+}
+
+@keyframes shoot{
+
+  0%{
+    transform:translateX(0) rotate(-20deg);
+    opacity:0;
+  }
+
+  10%{
+    opacity:.7;
+  }
+
+  100%{
+    transform:translateX(140vw) rotate(-20deg);
+    opacity:0;
+  }
+}
+
+@keyframes fall{
+
+  to{
+    transform:
+      translateY(110vh)
+      rotate(720deg);
+
+    opacity:0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="shooting-star"></div>
+<div class="shooting-star second"></div>
+
+<!-- ===== MAIN ===== -->
+
+<div class="main">
+
+  <!-- LEFT -->
+
+  <section class="left">
+
+    <p class="label">
+      WITH JOY AND PRIDE
+    </p>
+
+    <h1 class="title">
+      Happy<br>
+      Graduation
+    </h1>
+
+    <p class="subtitle">
+      a moment of celebration, a lifetime of memories
+    </p>
+
+    <div class="divider"></div>
+
+
+  </section>
+
+  <!-- RIGHT -->
+
+  <section class="right">
+
+    <div class="card">
+
+      <p class="message-label">
+        A MESSAGE FOR YOU
+      </p>
+
+      <p class="message">
+        “Terimakasih sudah menjadi bagian dari perjalanan selama masa putih abu ini.
+        Hari ini bukanlah akhir, tapi awal dari petualangan baru yang penuh peluang.
+        Teruslah bermimpi besar, bekerja keras, dan jadilah bintang yang selalu bersinar terang di langit kehidupanmu.”
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="signature">
+        dengan penuh cinta,
+
+        <span>
+          Fadilah 🤍
+        </span>
+      </p>
+
+      <button class="btn" onclick="confetti()">
+        ✦ Rayakan Bersama ✦
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+<script>
+
+/* ===== STARS ===== */
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+
+function resize(){
+
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+
+}
+
+resize();
+
+window.addEventListener("resize", resize);
+
+function createStars(){
+
+  stars = [];
+
+  for(let i = 0; i < 220; i++){
+
+    stars.push({
+
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+
+      r: Math.random() * 1.5,
+
+      a: Math.random(),
+
+      s: Math.random() * 0.02
+
+    });
+
+  }
+
+}
+
+createStars();
+
+function animate(){
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  stars.forEach(star => {
+
+    star.a += star.s;
+
+    const opacity =
+      Math.sin(star.a) * 0.5 + 0.5;
+
+    ctx.beginPath();
+
+    ctx.arc(
+      star.x,
+      star.y,
+      star.r,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fillStyle =
+      `rgba(255,255,255,${opacity})`;
+
+    ctx.fill();
+
+  });
+
+  requestAnimationFrame(animate);
+
+}
+
+animate();
+
+/* ===== CONFETTI ===== */
+
+const colors = [
+  "#A78BFA",
+  "#93C5FD",
+  "#C084FC",
+  "#ffffff",
+  "#DDD6FE"
+];
+
+function confetti(){
+
+  for(let i = 0; i < 150; i++){
+
+    setTimeout(() => {
+
+      const el =
+        document.createElement("div");
+
+      el.className = "confetti";
+
+      el.style.left =
+        Math.random() * 100 + "vw";
+
+      el.style.background =
+        colors[
+          Math.floor(
+            Math.random() * colors.length
+          )
+        ];
+
+      el.style.width =
+        Math.random() * 8 + 5 + "px";
+
+      el.style.height =
+        Math.random() * 8 + 5 + "px";
+
+      el.style.animationDuration =
+        Math.random() * 3 + 2 + "s";
+
+      document.body.appendChild(el);
+
+      setTimeout(() => {
+
+        el.remove();
+
+      }, 5000);
+
+    }, i * 12);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
